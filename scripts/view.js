@@ -44,17 +44,21 @@ const view = {
         textArea.select();
         document.execCommand("Copy");
         textArea.remove();
-        this.prompt();
+        this.prompt('success', 'Password copied to the clipboard', false);
     },
 
-    prompt() {
+    prompt(type, title, showConfirmButton) {
         Swal.fire({
             position: 'center',
-            type: 'success',
-            title: 'Password copied to the clipboard',
-            showConfirmButton: false,
-            timer: 1500
+            type,
+            title,
+            showConfirmButton,
+            timer: showConfirmButton ? false : 1500
         })
+    },
+
+    error(errorMessage) {
+        this.prompt('error', errorMessage, true);
     }
 };
 
