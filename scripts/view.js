@@ -32,6 +32,27 @@ const view = {
         generatedPassword.appendChild(copyPasswordButton);
         
         return generatedPassword;
+    },
+
+    copyPasswordOnClipboard() {        
+        const copiedPass = document.getElementById("p__password");
+        const textArea = document.createElement("textarea");
+        textArea.value = copiedPass.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("Copy");
+        textArea.remove();
+        this.prompt();
+    },
+
+    prompt() {
+        Swal.fire({
+            position: 'center',
+            type: 'success',
+            title: 'Password copied to the clipboard',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 };
 
