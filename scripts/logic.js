@@ -15,19 +15,12 @@ const logic = {
             if (isChecked) checkedOptions.push(option);                         
         });
 
-        for (let i = 0; i <= passLength; i++) {
+        for (let i = 1; i <= passLength; i++) {            
             const randoOptionIndex = Math.floor(Math.random() * checkedOptions.length);
             const characters = OPTION_TYPES[checkedOptions[randoOptionIndex]];
             const number = Math.floor(Math.random() * characters.length);
             newPassword += characters.charAt(number);   
         }        
         return newPassword;
-    },
-
-    copyPasswordOnClipboard() {
-        const copiedPass = document.getElementById("p__password");
-        copiedPass.select();
-        document.execCommand("copy");
-        alert('Password copied to the clipboard');
     }
 };
