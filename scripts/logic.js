@@ -1,5 +1,12 @@
 const logic = {
     generatePassword(passLength) {
+        const isInvalidLength = this.passwordLengthValidator(passLength);
+
+        if (isInvalidLength) {
+            view.error(isInvalidLength);
+            return null;
+        }
+        
         const OPTION_TYPES = {
             lower_case: 'abcdefghijklmnopqrstuvwxyz',
             upper_case: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -22,5 +29,11 @@ const logic = {
             newPassword += characters.charAt(number);   
         }        
         return newPassword;
+    },
+
+    passwordLengthValidator(passLength) {
+        if (passLength < 8 || passLength > 32) return 'Incorrect length, enter a length betheen 8 and 32 characters';
+        if (isNaN(passLength)) return 'Lenght is not a number';
+        return false;
     }
 };
