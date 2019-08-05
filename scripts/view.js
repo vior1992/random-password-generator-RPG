@@ -9,9 +9,11 @@ const view = {
         checkbox.checked = true;
 
         const optionName = this.capitalize(optionType).replace(/_/g, ' ');
-        const typeName = document.createTextNode(optionName);
-     
-        option.appendChild(typeName);
+        const optionLabel = document.createElement('label');
+        optionLabel.htmlFor = `checkbox__${optionType}`;
+        optionLabel.innerHTML = optionName;
+
+        option.appendChild(optionLabel);
         option.appendChild(checkbox);
         return option;
     },
