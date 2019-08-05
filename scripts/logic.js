@@ -1,5 +1,5 @@
 const logic = {
-    generatePassword() {
+    generatePassword(passLength) {
         const OPTION_TYPES = {
             lower_case: 'abcdefghijklmnopqrstuvwxyz',
             upper_case: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -8,18 +8,26 @@ const logic = {
         };
 
         const checkedOptions = [];
-        let test = ''
+        let newPassword = '';
 
         Object.keys(OPTION_TYPES).map(option => {
             const isChecked = document.getElementById(`checkbox__${option}`).checked;                
             if (isChecked) checkedOptions.push(option);                         
         });
 
-        for (let i = 0; i <= 12; i++) {
-            const characters = OPTION_TYPES[checkedOptions[Math.floor(Math.random() * checkedOptions.length)]]
+        for (let i = 0; i <= passLength; i++) {
+            const randoOptionIndex = Math.floor(Math.random() * checkedOptions.length);
+            const characters = OPTION_TYPES[checkedOptions[randoOptionIndex]];
             const number = Math.floor(Math.random() * characters.length);
-            test += characters.charAt(number);   
+            newPassword += characters.charAt(number);   
         }        
-        return test;
+        return newPassword;
+    },
+
+    copyPasswordOnClipboard() {
+        const copiedPass = document.getElementById("p__password");
+        copiedPass.select();
+        document.execCommand("copy");
+        alert('Password copied to the clipboard');
     }
 };
