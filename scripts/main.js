@@ -19,8 +19,8 @@ window.onload = () => {
 function checkClick({ target: { id } }) { 
     switch (id) {
         case 'submit__button':
-            const hasPassword = password.contains(document.getElementById('p__password'));
-            const hasError = document.contains(document.getElementById('error'));    
+            const hasPassword = document.getElementById('p__password');
+            const hasError = document.getElementById('error');    
  
             if (hasPassword) document.getElementById('p__password').remove();
             if (hasError) document.getElementById('error').remove();

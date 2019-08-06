@@ -22,6 +22,8 @@ const logic = {
             if (isChecked) checkedOptions.push(option);                         
         });
 
+        if (!checkedOptions.length) return view.error('Must be minimum 1 option checked');
+
         for (let i = 1; i <= passLength; i++) {            
             const randoOptionIndex = Math.floor(Math.random() * checkedOptions.length);
             const characters = OPTION_TYPES[checkedOptions[randoOptionIndex]];
