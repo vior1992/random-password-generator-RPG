@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Random password generator</title>
 </head>
 <body>
     <section id="main__section">
         <div id="form__container">
             <form id="options__form"></form>
-            <input id="length__input" value="8" type="number" min="8" max="32" />
+            <div class="length__container">
+              <Label for="length__input">Password length</Label>
+              <input id="length__input" value="8" type="number" min="8" max="32" />
+            </div>
             <button id="submit__button" class="glow-on-hover" type="button">GENERATE</button>
-        </div>
-        <div id="pass__container">
         </div>
     </section>
     <script src="./scripts/logic.js"></script>

@@ -2,10 +2,12 @@ const view = {
     passwordOptions(optionType) {
         const option = document.createElement('div');
         option.id = `option__${optionType}`;
+        option.className = 'options'
 
         const checkbox = document.createElement('input');
         checkbox.id = `checkbox__${optionType}`;
-        checkbox.type = "checkbox";
+        checkbox.className = 'options__checkbox'
+        checkbox.type = 'checkbox';
         checkbox.checked = true;
 
         const optionName = this.capitalize(optionType).replace(/_/g, ' ');
@@ -23,26 +25,30 @@ const view = {
     },
 
     password(password) {
+        const passwordContainer = document.createElement('div');
+        passwordContainer.id = 'pass__container';
         const generatedPassword = document.createElement('p');
         generatedPassword.id ='p__password';
         generatedPassword.innerHTML = password;
 
-        const copyPasswordButton = document.createElement('button');
+        const copyPasswordButton = document.createElement('i');
         copyPasswordButton.id ='button__copy';
+        copyPasswordButton.className = 'fa fa-copy'
         copyPasswordButton.type = 'button';
 
-        generatedPassword.appendChild(copyPasswordButton);
-        
-        return generatedPassword;
+        passwordContainer.appendChild(generatedPassword);
+        passwordContainer.appendChild(copyPasswordButton);
+
+        return passwordContainer;
     },
 
-    copyPasswordOnClipboard() {        
-        const copiedPass = document.getElementById("p__password");
-        const textArea = document.createElement("textarea");
+    copyPasswordOnClipboard() {
+        const copiedPass = document.getElementById('p__password');
+        const textArea = document.createElement('textarea');
         textArea.value = copiedPass.textContent;
         document.body.appendChild(textArea);
         textArea.select();
-        document.execCommand("Copy");
+        document.execCommand('Copy');
         textArea.remove();
         this.prompt('success', 'Password copied to the clipboard', false);
     },

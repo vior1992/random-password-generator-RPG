@@ -1,11 +1,13 @@
+*IN CONSTRUCTION*
+
+
+
 TODO:
 
-minimum 1 checked
-scaffolding js app (structure)
-Styles
+class on logic
 test
-add cool font
-imports
+Styles
+fix imports and delete repeat code
 add pharagraph explanation
-add text to input length
 readme
+add strong/mid/low password advicer
