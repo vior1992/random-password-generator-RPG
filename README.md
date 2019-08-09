@@ -3,11 +3,9 @@
 
 
 TODO:
-
-class on logic
+fix imports and delete repeat code
 test
 Styles
-fix imports and delete repeat code
 add pharagraph explanation
 readme
 add strong/mid/low password advicer

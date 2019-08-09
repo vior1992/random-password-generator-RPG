@@ -3,9 +3,7 @@
   "engines": {
     "node": ">=4"
   },
-  "dependencies": {
-    "browserify": "^16.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
