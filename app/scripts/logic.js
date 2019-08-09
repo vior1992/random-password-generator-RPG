@@ -23,7 +23,7 @@ class Password {
       if (isChecked) checkedOptions.push(option);
     });
 
-    if (!checkedOptions.length) return view.error('Must be minimum 1 option checked');
+    if (!checkedOptions.length) return view.error('Must be at least one option chosen');
 
     for (let i = 1; i <= passLength; i++) {
       const randomOptionIndex = Math.floor(Math.random() * checkedOptions.length);
@@ -42,7 +42,7 @@ class Password {
   passwordLengthValidator(passLength) {
     if (isNaN(passLength)) return 'Lenght is not a number';
     if (passLength < 8 || passLength > 32 || !passLength.trim().length) {
-      return `${!passLength.trim().length ? 'Empty' : 'Incorrect'} length, please enter a length betheen 8 and 32 characters`;
+      return `${!passLength.trim().length ? 'Empty' : 'Incorrect'} length, please enter a length between 8 and 32 characters`;
     }
     return false;
   };
