@@ -1,20 +1,16 @@
-// const OPTION_TYPES = require('../constants');
-// const Password = require('./logic');
+import { OPTION_TYPES } from '../constants';
+import Password from './logic';
+import view from './view';
+import '../styles/index.css';
 
 const password = new Password();
 const form = document.getElementById('options__form');
 const passwordLength = document.getElementById('length__input');
-document.addEventListener('click', checkClick);
 
-window.onload = () => {
-  const OPTION_TYPES = {
-    lower_case: 'abcdefghijklmnopqrstuvwxyz',
-    upper_case: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    numbers: '0123456789',
-    special_symbols: '!$%^&*()-=+[]{};#:@~,./<>?'
-  };
-    Object.keys(OPTION_TYPES).map(option => form.appendChild(view.passwordOptions(option)));
-};
+document.addEventListener('click', checkClick);
+document.addEventListener('DOMContentLoaded', function (event) {
+  Object.keys(OPTION_TYPES).map(option => form.appendChild(view.passwordOptions(option)))
+});
 
 function checkClick({ target: { id } }) {
   switch (id) {

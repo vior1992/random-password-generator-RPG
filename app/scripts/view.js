@@ -1,3 +1,5 @@
+import { COPIED_PASS_MESSAGE } from '../constants';
+
 const view = {
   passwordOptions(optionType) {
     const option = document.createElement('div');
@@ -50,7 +52,7 @@ const view = {
     textArea.select();
     document.execCommand('Copy');
     textArea.remove();
-    this.prompt('success', 'Password copied to the clipboard', false);
+    this.prompt('success', COPIED_PASS_MESSAGE, false);
   },
 
   prompt(type, title, showConfirmButton) {
@@ -68,3 +70,4 @@ const view = {
   }
 };
 
+export default view;
