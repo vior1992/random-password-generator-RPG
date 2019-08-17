@@ -1,5 +1,14 @@
-// const OPTION_TYPES = require('../constants');
-class Password {
+import view from './view';
+import {
+  LENGTH_ERROR,
+  LENGTH_ERROR_NAN,
+  MAX_LENGTH,
+  MIN_LENGTH,
+  OPTION_ERROR,
+  OPTION_TYPES
+} from '../constants';
+
+export default class Password {
   generatePassword(passLength) {
     const isInvalidLength = this.passwordLengthValidator(passLength);
 
@@ -7,13 +16,6 @@ class Password {
         view.error(isInvalidLength);
         return null;
     }
-
-    const OPTION_TYPES = {
-      lower_case: 'abcdefghijklmnopqrstuvwxyz',
-      upper_case: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-      numbers: '0123456789',
-      special_symbols: '!$%^&*()-=+[]{};#:@~,./>?'
-    };
 
     const checkedOptions = [];
     let newPassword = '';
@@ -23,7 +25,7 @@ class Password {
       if (isChecked) checkedOptions.push(option);
     });
 
-    if (!checkedOptions.length) return view.error('Must be at least one option chosen');
+    if (!checkedOptions.length) return view.error(OPTION_ERROR);
 
     for (let i = 1; i <= passLength; i++) {
       const randomOptionIndex = Math.floor(Math.random() * checkedOptions.length);
@@ -40,10 +42,8 @@ class Password {
   };
 
   passwordLengthValidator(passLength) {
-    if (isNaN(passLength)) return 'Lenght is not a number';
-    if (passLength < 8 || passLength > 32 || !passLength.trim().length) {
-      return `${!passLength.trim().length ? 'Empty' : 'Incorrect'} length, please enter a length between 8 and 32 characters`;
-    }
+    if (isNaN(passLength)) return LENGTH_ERROR_NAN;
+    if (passLength < MIN_LENGTH || passLength > MAX_LENGTH || !passLength.trim().length) return LENGTH_ERROR(passLength);
     return false;
   };
 
@@ -61,18 +61,14 @@ class Password {
         case 'numbers':
           regex += '(?=.*[0-9])';
           break;
-        case 'special_symbols':
+        default:
           regex += '(?=.*[!@#\$%\^&\*])';
-          break;
-        default: null;
           break;
       }
     });
 
-    regex += '.{8,12}$';
+    regex += '.{8,32}$';
     const strongRegex = new RegExp(regex);
     return strongRegex.test(newPassword);
   };
 };
-
-// module.exports = Password;
