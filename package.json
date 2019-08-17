@@ -30,8 +30,10 @@
     "start": "webpack-dev-server -d",
     "build": "webpack-dev-server",
     "test": "npm run serve:test",
-    "tasks": "gulp --tasks"
+    "tasks": "gulp --tasks",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
+  "heroku-run-build-script": false,
   "browserslist": [
     "> 1%",
     "last 2 versions",
