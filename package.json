@@ -29,10 +29,7 @@
     "serve:dist": "cross-env NODE_ENV=production gulp serve",
     "start": "webpack-dev-server -d",
     "build": "webpack-dev-server",
-    "test": "npm run serve:test",
-    "tasks": "gulp --tasks",
-    "heroku-prebuild": "npm install --dev",
-    "heroku-postbuild": "echo Skip build on Heroku"
+    "test": "npm run serve:test"
   },
   "heroku-run-build-script": false,
   "browserslist": [
